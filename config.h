@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrains Mono Nerd Font:pixelsize=24:antialias=true:autohint=true";
-static int borderpx = 4;
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -75,6 +75,9 @@ static int bellvolume = 0;
 
 /* default TERM value */
 char *termname = "st-256color";
+
+/* alpha variable for alpha patch */
+float alpha=0.7;
 
 /*
  * spaces per tab
@@ -200,8 +203,8 @@ static Shortcut shortcuts[] = {
 	{ SUPERMOD,             XK_y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	//{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
-	//{ MODKEY,               XK_j,           kscrolldown,      {.i =  1} },
+	{ SUPERMOD,             XK_k,           kscrollup,      {.i =  1} },
+	{ SUPERMOD,             XK_j,           kscrolldown,      {.i =  1} },
 };
 
 /*
