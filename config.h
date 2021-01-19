@@ -8,6 +8,7 @@
 static char *font = "JetBrains Mono Nerd Font:pixelsize=24:antialias=true:autohint=true";
 static int borderpx = 2;
 
+
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -195,16 +196,16 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ SUPERMOD|ShiftMask,   XK_Prior,	zoom,           {.f = +1} },
+	{ SUPERMOD|ShiftMask,   XK_Next,	zoom,           {.f = -1} },
+	{ SUPERMOD|ShiftMask,   XK_Home,        zoomreset,      {.f =  0} },
 	{ SUPERMOD,             XK_c,           clipcopy,       {.i =  0} },
 	{ SUPERMOD,             XK_v,           clippaste,      {.i =  0} },
 	{ SUPERMOD,             XK_y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ SUPERMOD,             XK_k,           kscrollup,      {.i =  1} },
-	{ SUPERMOD,             XK_j,           kscrolldown,      {.i =  1} },
+	{ SUPERMOD,             XK_j,           kscrolldown,    {.i =  1} },
 };
 
 /*
