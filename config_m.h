@@ -79,7 +79,7 @@ static int bellvolume = 0;
 char *termname = "st-256color";
 
 /* alpha variable for alpha patch */
-float alpha=0.7;
+float alpha=0.85;
 
 /*
  * spaces per tab
@@ -98,47 +98,50 @@ float alpha=0.7;
  */
 unsigned int tabspaces = 8;
 
-
-
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+  /* 8 normal colors */
+  [0] = "#0f0f0f", /* black   */
+  [1] = "#ac8a8c", /* red     */
+  [2] = "#8aac8b", /* green   */
+  [3] = "#aca98a", /* yellow  */
+  [4] = "#8f8aac", /* blue    */
+  [5] = "#ac8aac", /* magenta */
+  [6] = "#8aabac", /* cyan    */
+  [7] = "#e7e7e7", /* white   */
 
-	[255] = 0,
+  /* 8 bright colors */
+  [8]  = "#191919", /* black   */
+  [9]  = "#c49ea0", /* red     */
+  [10] = "#9ec49f", /* green   */
+  [11] = "#c4c19e", /* yellow  */
+  [12] = "#a39ec4", /* blue    */
+  [13] = "#c49ec4", /* magenta */
+  [14] = "#9ec3c4", /* cyan    */
+  [15] = "#f5f5f5", /* white   */
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+  /* special colors */
+  [256] = "#050505", /* background */
+  [257] = "#f0f0f0", /* foreground */
 };
-
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 256;
 
+/*
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
 /*
  * Default shape of cursor
  * 2: Block ("█")
